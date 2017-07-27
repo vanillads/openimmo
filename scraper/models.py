@@ -4,7 +4,6 @@ from sqlalchemy.engine.url import URL
 
 import settings
 
-
 DeclarativeBase = declarative_base()
 
 
@@ -21,12 +20,16 @@ def create_properties_table(engine):
     DeclarativeBase.metadata.create_all(engine)
 
 
-class Properties(DeclarativeBase):
+class ScraperProperties(DeclarativeBase):
     """Sqlalchemy properties model"""
     __tablename__ = "properties"
 
-    id = Column(String(255), primary_key=True)
+    myid = Column('myid', String(255), primary_key=True)
+    link = Column('link', String(255))
     title = Column('title', String(255))
+    city = Column('city', String(255))
+    code = Column('code', String(5))
+    cat = Column('cat', String(255))
     img = Column('img', String(255), nullable=True)
     description = Column('description', String(255), nullable=True)
     price = Column('price', String(255), nullable=True)

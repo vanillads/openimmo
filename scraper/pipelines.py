@@ -6,7 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 from sqlalchemy.orm import sessionmaker
-from models import Properties, db_connect, create_properties_table
+from models import ScraperProperties, db_connect, create_properties_table
 
 class ScraperPipeline(object):
     def __init__(self):
@@ -22,10 +22,10 @@ class ScraperPipeline(object):
         This method is called for every item pipeline component.
         """
         session = self.Session()
-        prop = Properties(**item)
+        prop = ScraperProperties(**item)
 
         try:
-            session.add(prop)
+            session.merge(prop)
             session.commit()
         except:
             session.rollback()

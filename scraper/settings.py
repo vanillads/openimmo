@@ -22,7 +22,8 @@ DATABASE = {
     'port': '3306',
     'username': 'root',
     'password': 'root',
-    'database': 'immo'
+    'database': 'immo',
+    'query': {'charset':'utf8'}
 }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
